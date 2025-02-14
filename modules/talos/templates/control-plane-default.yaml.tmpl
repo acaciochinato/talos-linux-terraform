@@ -1,0 +1,14 @@
+machine:
+  network:
+    interfaces:
+      - deviceSelector:
+          physical: true
+        vip:
+          ip: ${vip}
+  time:
+    servers:
+      - ${ntp_server}
+cluster:
+  network:
+    cni:
+      name: none
