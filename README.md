@@ -1,4 +1,4 @@
-# Kubernetes Cluster Deployment in Proxmox using Talos Linux, Cilium CNI, and Longhorn
+# Kubernetes Cluster Deployment in Proxmox using Talos Linux, Cilium CNI and Longhorn
 
 This Terraform project automates the deployment of a Kubernetes cluster using Talos Linux in a Proxmox virtual environment. The cluster is configured with Cilium CNI for networking and Longhorn for distributed storage. A personal feature of this setup is that the first worker node is provisioned with an additional disk, which is exclusively used by Longhorn for storage.
 
@@ -45,7 +45,7 @@ Before cloning the project, make sure you have the following:
 ### Step 1: Clone the Repository
 ```
 git clone https://github.com/acaciochinato/talos-linux-terraform
-cd your-repo-name
+cd talos-linux-terraform
 ```
 
 ### Step 2: Configure the variables
