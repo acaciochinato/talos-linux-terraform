@@ -85,5 +85,9 @@ terraform {
       source  = "siderolabs/talos"
       version = "0.7.0"
     }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "1.19.0"
+    }
   }
 }

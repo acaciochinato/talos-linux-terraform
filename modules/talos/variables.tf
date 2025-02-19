@@ -10,7 +10,7 @@ variable "cluster_endpoint" {
 }
 variable "vip" {
   type        = string
-  description = "VIP For the Master Nodes"
+  description = "VIP For the Master Nodes and Address for Metallb to expose a LoadBalancer IP"
   default     = "192.168.1.10"
 }
 variable "ntp_server" {

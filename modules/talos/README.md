@@ -5,6 +5,7 @@
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.19.0 |
 | <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.7.0 |
 
 ## Providers
@@ -12,6 +13,7 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 2.17.0 |
+| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.19.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.35.1 |
 | <a name="provider_local"></a> [local](#provider\_local) | 2.5.2 |
 | <a name="provider_talos"></a> [talos](#provider\_talos) | 0.7.0 |
@@ -27,7 +29,11 @@ No modules.
 |------|------|
 | [helm_release.cilium](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.longhorn](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.metallb](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubectl_manifest.IPAddressPool](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
+| [kubectl_manifest.L2Advertisement](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
 | [kubernetes_namespace.longhorn-system](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_namespace.metallb-system](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
 | [local_file.kubeconfig](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.talosconfig](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [talos_cluster_kubeconfig.kubeconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0/docs/resources/cluster_kubeconfig) | resource |
@@ -53,7 +59,7 @@ No modules.
 | <a name="input_longhorn_extra_disk_path"></a> [longhorn\_extra\_disk\_path](#input\_longhorn\_extra\_disk\_path) | The ful path of the second block device on the host that will be used for storage | `string` | `"/dev/sda"` | no |
 | <a name="input_longhorn_version"></a> [longhorn\_version](#input\_longhorn\_version) | The version of the Longhorn Helm chart | `string` | `"1.8.0"` | no |
 | <a name="input_ntp_server"></a> [ntp\_server](#input\_ntp\_server) | NTP Server to configure on all the nodes | `string` | n/a | yes |
-| <a name="input_vip"></a> [vip](#input\_vip) | VIP For the Master Nodes | `string` | `"192.168.1.10"` | no |
+| <a name="input_vip"></a> [vip](#input\_vip) | VIP For the Master Nodes and Address for Metallb to expose a LoadBalancer IP | `string` | `"192.168.1.10"` | no |
 | <a name="input_worker_longhorn"></a> [worker\_longhorn](#input\_worker\_longhorn) | IPv4 of the Longhorn node | `string` | n/a | yes |
 | <a name="input_workers_ips"></a> [workers\_ips](#input\_workers\_ips) | List of IPv4 of the workers nodes | `list(string)` | n/a | yes |
 
