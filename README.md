@@ -1,6 +1,6 @@
-# Kubernetes Cluster Deployment in Proxmox using Talos Linux, Cilium CNI, Metallb and Longhorn
+# Kubernetes Deployment in Proxmox using Talos Linux, Cilium, Metallb, NGINX Ingress Controller and Longhorn
 
-This Terraform project automates the deployment of a Kubernetes cluster using Talos Linux in a Proxmox virtual environment. The cluster is configured with Cilium CNI for networking and Longhorn for distributed storage. A personal feature of this setup is that the first worker node is provisioned with an additional disk, which is exclusively used by Longhorn for storage.
+This Terraform project automates the deployment of a Kubernetes cluster using Talos Linux in a Proxmox virtual environment. The cluster is configured with Cilium CNI for networking, metallb for a `LoadBalancer` implementation with NGINX and Longhorn for distributed storage. A personal feature of this setup is that the first worker node is provisioned with an additional disk, which is exclusively used by Longhorn for storage.
 
 The project is customizable via variables, allowing users to tailor the cluster to their specific needs. Please take a look at the `variables.tf` of each module and adjust accordingly.
 
@@ -11,7 +11,7 @@ This project uses Terraform to:
 - Bootstrap a Kubernetes cluster with Talos Linux;
 - Configure the cluster to use Cilium CNI instead of the default CNI provided by Talos;
 - Install Longhorn for distributed storage;
-- Install metallb to provide a network LoadBalancer implementation
+- Install metallb and NGINX ingress-controller to provide a network LoadBalancer implementation to expose applications.
 
 ## Prerequisites
 
@@ -40,6 +40,7 @@ Before cloning the project, make sure you have the following:
 - Cilium CNI: Replaces the default CNI with Cilium for advanced networking features.
 - Longhorn Storage: Installs Longhorn for distributed block storage, with the first worker node receiving an additional dedicated disk enforced using the Longhorn configuration flag `createDefaultDiskLabeledNodes`;
 - Metallb to create Kubernetes services of type `LoadBalancer` in clusters that don’t run on a cloud providers;
+- NGINX Ingress-controller to expose applications outside of the cluster;
 - Highly Customizable: All machine configurations are customizable using Terraform variables and template files for the Talos machines.
 
 ## Usage
