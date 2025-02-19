@@ -20,6 +20,10 @@ terraform {
       source  = "hashicorp/helm"
       version = "2.17.0"
     }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "1.19.0"
+    }
   }
 }
 provider "proxmox" {
@@ -34,6 +38,13 @@ provider "proxmox" {
 
 provider "talos" {}
 provider "local" {}
+
+provider "kubectl" {
+  host                   = module.talos.cluster_host
+  client_certificate     = base64decode(module.talos.cluster_client_certificate)
+  client_key             = base64decode(module.talos.cluster_client_key)
+  cluster_ca_certificate = base64decode(module.talos.cluster_ca_certificate)
+}
 
 provider "kubernetes" {
   host                   = module.talos.cluster_host
