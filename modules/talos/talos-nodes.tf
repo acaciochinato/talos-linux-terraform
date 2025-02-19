@@ -40,6 +40,7 @@ resource "talos_machine_configuration_apply" "workers_config_apply" {
   node                        = each.key
 }
 resource "talos_machine_configuration_apply" "worker_longhorn_config_apply" {
+  depends_on                  = [talos_machine_configuration_apply.workers_config_apply]
   client_configuration        = talos_machine_secrets.machine_secrets.client_configuration
   machine_configuration_input = data.talos_machine_configuration.worker.machine_configuration
   config_patches = [
