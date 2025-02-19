@@ -1,4 +1,4 @@
-# Kubernetes Cluster Deployment in Proxmox using Talos Linux, Cilium CNI and Longhorn
+# Kubernetes Cluster Deployment in Proxmox using Talos Linux, Cilium CNI, Metallb and Longhorn
 
 This Terraform project automates the deployment of a Kubernetes cluster using Talos Linux in a Proxmox virtual environment. The cluster is configured with Cilium CNI for networking and Longhorn for distributed storage. A personal feature of this setup is that the first worker node is provisioned with an additional disk, which is exclusively used by Longhorn for storage.
 
@@ -10,7 +10,8 @@ This project uses Terraform to:
 - Create virtual machines in Proxmox using the Talos Linux image;
 - Bootstrap a Kubernetes cluster with Talos Linux;
 - Configure the cluster to use Cilium CNI instead of the default CNI provided by Talos;
-- Install Longhorn for distributed storage.
+- Install Longhorn for distributed storage;
+- Install metallb to provide a network LoadBalancer implementation
 
 ## Prerequisites
 
@@ -38,6 +39,7 @@ Before cloning the project, make sure you have the following:
 - Talos Linux: Uses Talos Linux for a secure, immutable, and minimal Kubernetes OS.
 - Cilium CNI: Replaces the default CNI with Cilium for advanced networking features.
 - Longhorn Storage: Installs Longhorn for distributed block storage, with the first worker node receiving an additional dedicated disk enforced using the Longhorn configuration flag `createDefaultDiskLabeledNodes`;
+- Metallb to create Kubernetes services of type `LoadBalancer` in clusters that don’t run on a cloud providers;
 - Highly Customizable: All machine configurations are customizable using Terraform variables and template files for the Talos machines.
 
 ## Usage
